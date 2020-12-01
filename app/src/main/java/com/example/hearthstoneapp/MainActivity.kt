@@ -2,12 +2,9 @@ package com.example.hearthstoneapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hearthstoneapp.model.Info
+import com.example.hearthstoneapp.model.info.Info
 import com.google.gson.GsonBuilder
-import com.google.gson.annotations.SerializedName
-import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
-import org.json.JSONObject
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {

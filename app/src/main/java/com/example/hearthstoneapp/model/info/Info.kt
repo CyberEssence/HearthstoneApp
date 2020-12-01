@@ -1,4 +1,6 @@
-package com.example.hearthstoneapp.model
+package com.example.hearthstoneapp.model.info
+
+import com.example.hearthstoneapp.model.info.*
 
 data class Info(
     val patch: String,
@@ -6,8 +8,9 @@ data class Info(
     val sets: List<String>,
     val standard: List<String>,
     val wild: List<String>,
-    val factions: List<String>,
+    val types: List<String>,
     val qualities: List<String>,
+    val factions: List<String>,
     val races: List<String>,
-    val locales: List<String>
+    val locales: Locales
 )
