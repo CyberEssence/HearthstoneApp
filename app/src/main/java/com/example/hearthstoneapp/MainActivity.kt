@@ -2,6 +2,9 @@ package com.example.hearthstoneapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hearthstoneapp.model.Info
+import com.google.gson.GsonBuilder
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import org.json.JSONObject
@@ -33,6 +36,10 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
                 println(body)
+
+                val gson = GsonBuilder().create()
+
+                val info: Info = gson.fromJson(body, Info::class.java)
             }
 
             override fun onFailure(call: Call, e: IOException) {
