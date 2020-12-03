@@ -1,11 +1,16 @@
 package com.example.hearthstoneapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.hearthstoneapp.adapters.MainAdapter
 import com.example.hearthstoneapp.model.info.Info
-import com.google.gson.GsonBuilder
-import okhttp3.*
-import java.io.IOException
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,10 +18,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fetchJson()
+
+        Thread {
+            val g = Gson()
+            val d = Info(ArrayList())
+            val info: Info = g.fromJson(fetchJson(), Info::class.java)
+            var list = info.classes
+            list.forEach { d.classes.add(it) }
+            runOnUiThread{
+                val adapter = MainAdapter(list)
+                my_list.adapter = adapter
+                my_list.layoutManager = LinearLayoutManager(this)
+            }
+        }.start()
+
+
     }
 
-    fun fetchJson() {
+    fun fetchJson() : String? {
         println("Attempting to fetch JSON")
 
         val url = "https://omgvamp-hearthstone-v1.p.rapidapi.com/info"
@@ -29,19 +48,9 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         val client = OkHttpClient()
-        client.newCall(request).enqueue(object: Callback {
-            override fun onResponse(call: Call, response: Response) {
-                val body = response.body?.string()
-                println(body)
-
-                val gson = GsonBuilder().create()
-
-                val info: Info = gson.fromJson(body, Info::class.java)
-            }
-
-            override fun onFailure(call: Call, e: IOException) {
-                println("Failed to execute request")
-            }
-        })
+        val response = client.newCall(request).execute()
+        return response.body?.string()
     }
+
+
 }
