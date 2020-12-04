@@ -1,13 +1,19 @@
 package com.example.hearthstoneapp
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hearthstoneapp.adapters.MainAdapter
+import com.example.hearthstoneapp.adapters.SpinnerClassesAdapter
 import com.example.hearthstoneapp.model.info.Info
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.custom_item_spinner.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
@@ -26,9 +32,19 @@ class MainActivity : AppCompatActivity() {
             var list = info.classes
             list.forEach { d.classes.add(it) }
             runOnUiThread{
-                val adapter = MainAdapter(list)
-                my_list.adapter = adapter
-                my_list.layoutManager = LinearLayoutManager(this)
+                val arrayAdapter = ArrayAdapter(this, R.layout.custom_item_spinner, R.id.class_text, list)
+                customSpinner.adapter = arrayAdapter
+
+                customSpinner.onItemSelectedListener = object :
+                    AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                    }
+
+                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                        class_text.text = list[p2]
+                    }
+                }
             }
         }.start()
 
