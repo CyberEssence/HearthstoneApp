@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HearthstoneApp</string>
+    <string name="all_classes">All classes</string>
+    <string name="all_races">All races</string>
 </resources>

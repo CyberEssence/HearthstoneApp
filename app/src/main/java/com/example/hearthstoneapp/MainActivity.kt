@@ -4,18 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.hearthstoneapp.adapters.MainAdapter
-import com.example.hearthstoneapp.adapters.SpinnerClassesAdapter
 import com.example.hearthstoneapp.model.info.Info
+import com.example.hearthstoneapp.network.NetworkManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.custom_item_spinner.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import kotlinx.android.synthetic.main.custom_item_spinner_class.*
+import kotlinx.android.synthetic.main.custom_item_spinner_race.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,22 +22,39 @@ class MainActivity : AppCompatActivity() {
 
         Thread {
             val g = Gson()
-            val d = Info(ArrayList())
-            val info: Info = g.fromJson(fetchJson(), Info::class.java)
-            var list = info.classes
-            list.forEach { d.classes.add(it) }
-            runOnUiThread{
-                val arrayAdapter = ArrayAdapter(this, R.layout.custom_item_spinner, R.id.class_text, list)
-                customSpinner.adapter = arrayAdapter
+            val d = Info(ArrayList(), ArrayList())
+            val info: Info = g.fromJson(NetworkManager().fetchJson(), Info::class.java)
+            var listOfClasses = info.classes
+            //listOfClasses.add("All classes")
+            listOfClasses.forEach { d.classes.add(it) }
+            var listOfRaces = info.races
+            //listOfRaces.add("All races")
+            listOfRaces.forEach { d.races.add(it) }
 
-                customSpinner.onItemSelectedListener = object :
+            runOnUiThread{
+                val arrayAdapterOfClasses = ArrayAdapter(this, R.layout.custom_item_spinner_class, R.id.class_text, listOfClasses)
+                customSpinnerClasses.adapter = arrayAdapterOfClasses
+
+                val arrayAdapterOfRaces = ArrayAdapter(this, R.layout.custom_item_spinner_race, R.id.race_text, listOfRaces)
+                customSpinnerRaces.adapter = arrayAdapterOfRaces
+
+                customSpinnerClasses.onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(p0: AdapterView<*>?) {
-
                     }
 
                     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                        class_text.text = list[p2]
+                        class_text.text = listOfClasses[p2]
+                    }
+                }
+
+                customSpinnerRaces.onItemSelectedListener = object :
+                    AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+                    }
+
+                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                        race_text.text = listOfRaces[p2]
                     }
                 }
             }
@@ -50,23 +62,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-    fun fetchJson() : String? {
-        println("Attempting to fetch JSON")
-
-        val url = "https://omgvamp-hearthstone-v1.p.rapidapi.com/info"
-
-        val request = Request.Builder()
-            .url(url)
-            .get()
-            .addHeader("x-rapidapi-key", "0401a45eabmsh9c4b9e74c6108b2p18da99jsna4c4817ffe40")
-            .addHeader("x-rapidapi-host", "omgvamp-hearthstone-v1.p.rapidapi.com")
-            .build()
-
-        val client = OkHttpClient()
-        val response = client.newCall(request).execute()
-        return response.body?.string()
-    }
-
 
 }

@@ -3,11 +3,9 @@ package com.example.hearthstoneapp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hearthstoneapp.R
-import com.example.hearthstoneapp.model.info.Info
-import kotlinx.android.synthetic.main.custom_item_spinner.view.*
+import kotlinx.android.synthetic.main.custom_item_spinner_class.view.*
 
 class MainAdapter(val list: ArrayList<String>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
@@ -15,7 +13,7 @@ class MainAdapter(val list: ArrayList<String>) : RecyclerView.Adapter<MainAdapte
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.custom_item_spinner, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.custom_item_spinner_class, parent, false)
         return ViewHolder(itemView)
     }
 

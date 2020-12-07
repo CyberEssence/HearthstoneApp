@@ -7,11 +7,9 @@ import com.google.gson.GsonBuilder
 import okhttp3.*
 import java.io.IOException
 
-open class NetworkManager {
+class NetworkManager {
 
-    lateinit var spinner: Spinner
-
-    fun fetchJson(list: ArrayList<Info>){
+    fun fetchJson() : String? {
         println("Attempting to fetch JSON")
 
         val url = "https://omgvamp-hearthstone-v1.p.rapidapi.com/info"
@@ -24,21 +22,7 @@ open class NetworkManager {
             .build()
 
         val client = OkHttpClient()
-        client.newCall(request).enqueue(object: Callback {
-            override fun onResponse(call: Call, response: Response) {
-                val body = response.body?.string()
-                println(body)
-
-
-                val gson = GsonBuilder().create()
-                var i = 0
-                val packageList = gson.fromJson(body, list::class.java).toList()
-
-            }
-
-            override fun onFailure(call: Call, e: IOException) {
-                println("Failed to execute request")
-            }
-        })
+        val response = client.newCall(request).execute()
+        return response.body?.string()
     }
 }

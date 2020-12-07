@@ -29,10 +29,10 @@
 
 
         <TextView
-            android:id="@+id/class_text"
+            android:id="@+id/race_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="All classes"
+            android:text="@string/all_races"
             android:textColor="@android:color/white"
             android:textSize="24sp" />
 
