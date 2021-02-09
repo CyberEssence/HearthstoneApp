@@ -1,66 +1,97 @@
 package com.example.hearthstoneapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.util.Log.d
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hearthstoneapp.model.info.Info
-import com.example.hearthstoneapp.network.NetworkManager
-import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.custom_item_spinner_class.*
-import kotlinx.android.synthetic.main.custom_item_spinner_race.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.hearthstoneapp.adapters.DataAdapter
+import com.example.hearthstoneapp.model.cards.Basic
+import com.example.hearthstoneapp.model.cards.Basics
+import com.example.hearthstoneapp.model.cards.Cards
+import okhttp3.OkHttpClient
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var recyclerView: RecyclerView
+    private var basics = ArrayList<Basic>()
+    var basic : Basics = Basics(basics)
+    lateinit var adapter: DataAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initViews()
+        adapter.notifyDataSetChanged()
+
+        sendNetworkRequest(basic)
+    }
+
+    @SuppressLint("WrongConstant")
+    private fun initViews() {
+        recyclerView = findViewById(R.id.imageCard)
+        recyclerView.setHasFixedSize(true)
+        adapter = DataAdapter(this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
+    }
 
 
-        Thread {
-            val g = Gson()
-            val d = Info(ArrayList(), ArrayList())
-            val info: Info = g.fromJson(NetworkManager().fetchJson(), Info::class.java)
-            var listOfClasses = info.classes
-            //listOfClasses.add("All classes")
-            listOfClasses.forEach { d.classes.add(it) }
-            var listOfRaces = info.races
-            //listOfRaces.add("All races")
-            listOfRaces.forEach { d.races.add(it) }
 
-            runOnUiThread{
-                val arrayAdapterOfClasses = ArrayAdapter(this, R.layout.custom_item_spinner_class, R.id.class_text, listOfClasses)
-                customSpinnerClasses.adapter = arrayAdapterOfClasses
+    private fun sendNetworkRequest(card: Basics) {
 
-                val arrayAdapterOfRaces = ArrayAdapter(this, R.layout.custom_item_spinner_race, R.id.race_text, listOfRaces)
-                customSpinnerRaces.adapter = arrayAdapterOfRaces
+        val okhttpBuilder = OkHttpClient.Builder()
 
-                customSpinnerClasses.onItemSelectedListener = object :
-                    AdapterView.OnItemSelectedListener {
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
+        okhttpBuilder.addInterceptor { chain ->
+            val original = chain.request()
+
+            // Request customization: add request headers
+            val requestBuilder = original.newBuilder()
+                .addHeader("x-rapidapi-key", "0401a45eabmsh9c4b9e74c6108b2p18da99jsna4c4817ffe40")
+                .addHeader("x-rapidapi-host", "omgvamp-hearthstone-v1.p.rapidapi.com")
+
+            val request = requestBuilder.build()
+            chain.proceed(request)
+        }
+
+        val builder = Retrofit.Builder()
+            .baseUrl("https://omgvamp-hearthstone-v1.p.rapidapi.com/")
+            .client(okhttpBuilder.build())
+            .addConverterFactory(GsonConverterFactory.create())
+
+        val retrofit = builder.build()
+
+        val client = retrofit.create(GetCardService::class.java)
+        val call = client.getAllCards()
+        call.enqueue(object: Callback<Basics> {
+
+            override fun onResponse(call: Call<Basics>?, response: Response<Basics>?) {
+//                val cardResponse: Card? = response.body()
+//                val data = ArrayList(Arrays.asList(cardResponse?.img))
+//                adapter = DataAdapter(context, cards)
+//                recyclerView.adapter = adapter
+//                if (response?.body() != null)
+//                    adapter.setUsersListItems(response.body()!!)
+                if (response != null) {
+                    if(response.isSuccessful) {
+                        d("response", response.body().toString())
+                    } else {
+                        d("response code", response.code().toString())
                     }
 
-                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                        class_text.text = listOfClasses[p2]
-                    }
-                }
-
-                customSpinnerRaces.onItemSelectedListener = object :
-                    AdapterView.OnItemSelectedListener {
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
-                    }
-
-                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                        race_text.text = listOfRaces[p2]
-                    }
                 }
             }
-        }.start()
 
-
+            override fun onFailure(call: Call<Basics>, t: Throwable) {
+                d("error", t.toString())
+            }
+        })
     }
 
 }
