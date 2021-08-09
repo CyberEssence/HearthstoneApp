@@ -1,6 +1,7 @@
 package com.example.hearthstoneapp.data.repository.allcards
 
 import android.util.Log
+import com.example.hearthstoneapp.data.api.HearthstoneService
 import com.example.hearthstoneapp.data.model.AllCards
 import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsCacheDataSource
 import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsLocalDataSource
@@ -9,70 +10,68 @@ import com.example.hearthstoneapp.domain.repository.AllCardsRepository
 import java.lang.Exception
 
 class AllCardsRepositoryImpl(
-    private val allCardsRemoteDataSource: AllCardsRemoteDataSource,
-    private val allCardsLocalDataSource: AllCardsLocalDataSource,
-    private val allCardsCacheDataSource: AllCardsCacheDataSource
-): AllCardsRepository {
-
+    private val artistRemoteDatasource: AllCardsRemoteDataSource,
+    private val artistLocalDataSource: AllCardsLocalDataSource,
+    private val artistCacheDataSource: AllCardsCacheDataSource
+) : AllCardsRepository {
     override suspend fun getAllCards(): List<AllCards>? {
         return getAllCardsFromCache()
     }
 
     override suspend fun updateAllCards(): List<AllCards>? {
-        val newListOfAllCards = getAllCardsFromAPI()
-        allCardsLocalDataSource.clearAll()
-        allCardsLocalDataSource.saveAllCardsToDB(newListOfAllCards)
-        allCardsCacheDataSource.saveAllCardsToCache(newListOfAllCards)
-        return newListOfAllCards
+        val newListOfArtist = getAllCardsFromAPI()
+        artistLocalDataSource.clearAll()
+        artistLocalDataSource.saveAllCardsToDB(newListOfArtist)
+        artistCacheDataSource.saveAllCardsToCache(newListOfArtist)
+        return newListOfArtist
     }
 
     suspend fun getAllCardsFromAPI(): List<AllCards> {
-        var allCardsList: List<AllCards> = listOf()
+        var artistList: List<AllCards> = listOf()
         try {
-            val response = allCardsRemoteDataSource.getAllCards()
+            val response = artistRemoteDatasource.getAllCards()
             val body = response.body()
             if(body!=null){
-                allCardsList = body.Basic
+                artistList = body.Basic
             }
         } catch (exception: Exception) {
             Log.i("MyTag", exception.message.toString())
         }
-        return allCardsList
+        return artistList
     }
 
     suspend fun getAllCardsFromDB():List<AllCards>{
-        lateinit var allCardsList: List<AllCards>
+        var artistList: List<AllCards> = listOf()
         try {
-            allCardsList = allCardsLocalDataSource.getAllCardsFromDB()
+            artistList = artistLocalDataSource.getAllCardsFromDB()
         } catch (exception: Exception) {
             Log.i("MyTag", exception.message.toString())
         }
-        if(allCardsList.isNotEmpty()){
-            return allCardsList
+        if(artistList.size>0){
+            return artistList
         }else{
-            allCardsList = getAllCardsFromAPI()
-            allCardsLocalDataSource.saveAllCardsToDB(allCardsList)
+            artistList= getAllCardsFromAPI()
+            artistLocalDataSource.saveAllCardsToDB(artistList)
         }
 
-        return allCardsList
+        return artistList
     }
 
     suspend fun getAllCardsFromCache():List<AllCards>{
-        lateinit var allCardsList: List<AllCards>
+        var artistList: List<AllCards> = listOf()
         try {
-            allCardsList = allCardsCacheDataSource.getAllCardsFromCache()
+            artistList =artistCacheDataSource.getAllCardsFromCache()
         } catch (exception: Exception) {
             Log.i("MyTag", exception.message.toString())
         }
-        if(allCardsList.isNotEmpty()){
-            return allCardsList
+        if(artistList.size>0){
+            return artistList
         }else{
-            allCardsList = getAllCardsFromDB()
-            allCardsCacheDataSource.saveAllCardsToCache(allCardsList)
+            artistList=getAllCardsFromDB()
+            artistCacheDataSource.saveAllCardsToCache(artistList)
         }
 
-        return allCardsList
+        return artistList
     }
-
 
 }

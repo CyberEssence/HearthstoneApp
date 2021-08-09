@@ -13,7 +13,8 @@ class DataBaseModule {
     @Singleton
     @Provides
     fun provideMovieDataBase(context: Context):HearthstoneDatabase {
-        return Room.databaseBuilder(context, HearthstoneDatabase::class.java,"tmdbclient")
+        return Room.databaseBuilder(context, HearthstoneDatabase::class.java,"hearthstone")
+            .fallbackToDestructiveMigration()
             .build()
     }
     @Singleton

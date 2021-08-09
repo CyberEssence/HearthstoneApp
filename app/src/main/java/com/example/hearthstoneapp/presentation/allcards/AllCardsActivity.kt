@@ -43,14 +43,17 @@ class AllCardsActivity: AppCompatActivity() {
 
         allCardsViewModel= ViewModelProvider(this,factory)
             .get(AllCardsViewModel::class.java)
-        allCardsViewModel.refresh()
+
+
+        binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
         initRecyclerView()
     }
 
     private fun initRecyclerView(){
         binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = AllCardsAdapter(allCardsList)
+        adapter = AllCardsAdapter(allCardsList, applicationContext)
         binding.allCardsRecyclerView.adapter = adapter
+        displayAllCards()
     }
 
     private fun displayAllCards(){

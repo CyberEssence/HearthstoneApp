@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable/btn_rounded.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable/ic_update.xml" value="0.1" />
-        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards.xml" value="0.1" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards.xml" value="0.22" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/card_row.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/list_item.xml" value="0.1" />
@@ -13,7 +13,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

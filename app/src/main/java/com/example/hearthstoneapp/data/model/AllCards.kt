@@ -3,10 +3,13 @@ package com.example.hearthstoneapp.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import org.jetbrains.annotations.NotNull
 
 @Entity(tableName = "all_cards")
 data class AllCards(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @NotNull
+    var id: Int,
     @SerializedName("cardId")
     val cardId: String,
     @SerializedName("cardSet")
@@ -15,18 +18,14 @@ data class AllCards(
     val cost: Int,
     @SerializedName("dbfId")
     val dbfId: String,
-    @SerializedName("faction")
-    val faction: String,
     @SerializedName("locale")
     val locale: String,
     @SerializedName("name")
     var name: String,
     @SerializedName("playerClass")
-    val playerClass: String,
-    @SerializedName("rarity")
-    val rarity: String,
-    @SerializedName("text")
+    val playerClass: String
+    /*@SerializedName("text")
     val text: String,
     @SerializedName("type")
-    val type: String
+    val type: String*/
 )

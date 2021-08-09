@@ -1,22 +1,16 @@
 package com.example.hearthstoneapp.presentation.allcards
 
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hearthstoneapp.R
-import com.example.hearthstoneapp.data.api.RetrofitService
 import com.example.hearthstoneapp.data.model.AllCards
 import com.example.hearthstoneapp.databinding.ListItemBinding
-import kotlinx.android.synthetic.main.list_item.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.collections.ArrayList
 
-class AllCardsAdapter(var allCards: ArrayList<AllCards>): RecyclerView.Adapter<MyViewHolder>() {
+class AllCardsAdapter(var allCards: ArrayList<AllCards>, val context: Context): RecyclerView.Adapter<MyViewHolder>() {
     private val allCardsList = ArrayList<AllCards>()
 
     fun setList(allCards: List<AllCards>?){
@@ -48,7 +42,7 @@ class AllCardsAdapter(var allCards: ArrayList<AllCards>): RecyclerView.Adapter<M
 
 
 
-class MyViewHolder(val binding: ListItemBinding):
+class MyViewHolder(binding: ListItemBinding):
     RecyclerView.ViewHolder(binding.root){
 
     private val nameOfCard = binding.nameTextView

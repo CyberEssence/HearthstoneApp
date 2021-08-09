@@ -1,16 +1,29 @@
 package com.example.hearthstoneapp.data.api
 
+import android.util.Log
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 class RetrofitService {
 
-    fun getApiClient(): HearthstoneService {
-        val okhttpBuilder = OkHttpClient.Builder()
 
-        okhttpBuilder.addInterceptor{ chain ->
+
+    fun getApiClient(): HearthstoneService {
+
+
+        val okHttpBuilder = OkHttpClient.Builder()
+        okHttpBuilder.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+            .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+            .readTimeout(5, TimeUnit.MINUTES) // read timeout
+
+        okHttpBuilder.addInterceptor{ chain ->
             val original = chain.request()
 
             // Request customization: add request headers
@@ -27,11 +40,10 @@ class RetrofitService {
 
         return Retrofit.Builder()
             .baseUrl("https://omgvamp-hearthstone-v1.p.rapidapi.com/")
-            .client(okhttpBuilder.build())
+            .client(okHttpBuilder.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(HearthstoneService::class.java)
     }
-
 
 }
