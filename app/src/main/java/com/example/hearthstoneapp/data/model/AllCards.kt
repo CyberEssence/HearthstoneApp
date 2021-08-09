@@ -10,7 +10,7 @@ data class AllCards(
     @SerializedName("cardId")
     val cardId: String,
     @SerializedName("cardSet")
-    val cardSet: String,
+    var cardSet: String,
     @SerializedName("cost")
     val cost: Int,
     @SerializedName("dbfId")
@@ -20,7 +20,7 @@ data class AllCards(
     @SerializedName("locale")
     val locale: String,
     @SerializedName("name")
-    val name: String,
+    var name: String,
     @SerializedName("playerClass")
     val playerClass: String,
     @SerializedName("rarity")
