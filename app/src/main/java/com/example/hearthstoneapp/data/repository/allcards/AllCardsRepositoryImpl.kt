@@ -9,7 +9,7 @@ import com.example.hearthstoneapp.domain.repository.AllCardsRepository
 import java.lang.Exception
 
 class AllCardsRepositoryImpl(
-    private val allCardsRemoteDatasource: AllCardsRemoteDataSource,
+    private val allCardsRemoteDataSource: AllCardsRemoteDataSource,
     private val allCardsLocalDataSource: AllCardsLocalDataSource,
     private val allCardsCacheDataSource: AllCardsCacheDataSource
 ): AllCardsRepository {
@@ -27,9 +27,9 @@ class AllCardsRepositoryImpl(
     }
 
     suspend fun getAllCardsFromAPI(): List<AllCards> {
-        lateinit var allCardsList: List<AllCards>
+        var allCardsList: List<AllCards> = listOf()
         try {
-            val response = allCardsRemoteDatasource.getAllCards()
+            val response = allCardsRemoteDataSource.getAllCards()
             val body = response.body()
             if(body!=null){
                 allCardsList = body.Basic

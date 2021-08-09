@@ -1,6 +1,7 @@
-package com.example.hearthstoneapp
+package com.example.hearthstoneapp.presentation
 
 import android.app.Application
+import com.example.hearthstoneapp.BuildConfig
 import com.example.hearthstoneapp.presentation.di.Injector
 import com.example.hearthstoneapp.presentation.di.allcards.AllCardsSubComponent
 import com.example.hearthstoneapp.presentation.di.core.*
