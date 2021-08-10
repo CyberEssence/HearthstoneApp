@@ -1,13 +1,14 @@
-package com.example.hearthstoneapp.data.model.allcards.classic
+package com.example.hearthstoneapp.data.model.allcards.halloffame
 
 import androidx.annotation.Nullable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.hearthstoneapp.data.model.allcards.classic.Mechanic
 import com.google.gson.annotations.SerializedName
 import org.jetbrains.annotations.NotNull
 
-@Entity(tableName = "all_cards_classic")
-data class AllCardsClassic(
+@Entity(tableName = "all_cards_hall_of_fame")
+data class AllCardsHallOfFame(
     @PrimaryKey(autoGenerate = true)
     @NotNull
     var id: Int,

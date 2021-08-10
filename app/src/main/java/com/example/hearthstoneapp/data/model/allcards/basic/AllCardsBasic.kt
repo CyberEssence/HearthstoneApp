@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import org.jetbrains.annotations.NotNull
+import org.jetbrains.annotations.Nullable
 
 @Entity(tableName = "all_cards_basic")
 data class AllCardsBasic(
@@ -23,9 +24,15 @@ data class AllCardsBasic(
     @SerializedName("name")
     var name: String,
     @SerializedName("playerClass")
-    val playerClass: String
-    /*@SerializedName("text")
+    val playerClass: String,
+    @SerializedName("text")
     val text: String,
     @SerializedName("type")
-    val type: String*/
+    val type: String,
+    @SerializedName("faction")
+    @Nullable
+    val faction: String,
+    @SerializedName("rarity")
+    @Nullable
+    val rarity: String
 )
