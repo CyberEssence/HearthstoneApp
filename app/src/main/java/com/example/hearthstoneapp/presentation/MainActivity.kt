@@ -5,11 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.hearthstoneapp.R
-import com.example.hearthstoneapp.data.api.RetrofitService
-import com.example.hearthstoneapp.data.model.Basic
+import com.example.hearthstoneapp.data.model.allcards.basic.Basic
 import com.example.hearthstoneapp.databinding.ActivityMainBinding
 import com.example.hearthstoneapp.presentation.allcards.AllCardsActivity
-import java.util.*
 import kotlin.collections.ArrayList
 
 

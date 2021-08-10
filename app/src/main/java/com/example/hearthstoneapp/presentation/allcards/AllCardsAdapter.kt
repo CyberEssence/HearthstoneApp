@@ -6,17 +6,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hearthstoneapp.R
-import com.example.hearthstoneapp.data.model.AllCards
+import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.databinding.ListItemBinding
 import kotlin.collections.ArrayList
 
-class AllCardsAdapter(var allCards: ArrayList<AllCards>, val context: Context): RecyclerView.Adapter<MyViewHolder>() {
-    private val allCardsList = ArrayList<AllCards>()
+class AllCardsAdapter(var allCardBasics: ArrayList<AllCardsBasic>, val context: Context): RecyclerView.Adapter<MyViewHolder>() {
+    private val allCardsList = ArrayList<AllCardsBasic>()
 
-    fun setList(allCards: List<AllCards>?){
+    fun setList(allCardBasics: List<AllCardsBasic>?){
         allCardsList.clear()
-        if (allCards != null) {
-            allCardsList.addAll(allCards)
+        if (allCardBasics != null) {
+            allCardsList.addAll(allCardBasics)
         }
     }
 
@@ -49,9 +49,9 @@ class MyViewHolder(binding: ListItemBinding):
     private val nameOfCardSet = binding.cardSetTextView
 
 
-    fun bind(allCards: AllCards){
-        nameOfCard.text = allCards.name
-        nameOfCardSet.text = allCards.cardSet
+    fun bind(allCardsBasic: AllCardsBasic){
+        nameOfCard.text = allCardsBasic.name
+        nameOfCardSet.text = allCardsBasic.cardSet
     }
 
 }

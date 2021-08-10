@@ -1,16 +1,11 @@
 package com.example.hearthstoneapp.presentation.allcards
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.hearthstoneapp.data.api.RetrofitService
-import com.example.hearthstoneapp.data.model.AllCards
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsCacheDataSource
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsLocalDataSource
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsRemoteDataSource
-import com.example.hearthstoneapp.domain.repository.AllCardsRepository
+import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.domain.usecase.GetAllCardsUseCase
 import com.example.hearthstoneapp.domain.usecase.UpdateAllCardsUseCase
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +19,7 @@ class AllCardsViewModel(
 ): ViewModel() {
 
     val userService = RetrofitService().getApiClient()
-    val allCards = MutableLiveData<List<AllCards>>()
+    val allCards = MutableLiveData<List<AllCardsBasic>>()
 
     fun getAllCards() = liveData {
         val allCardsList = getAllCardsUseCase.execute()
@@ -46,7 +41,7 @@ class AllCardsViewModel(
             val response = userService.getAllCards()
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    allCards.value = response.body()?.Basic
+                    allCards.value = response.body()?.basic
                     Log.d("MyTag", response.body().toString())
                 } else {
                     Log.e("TagError","Error")

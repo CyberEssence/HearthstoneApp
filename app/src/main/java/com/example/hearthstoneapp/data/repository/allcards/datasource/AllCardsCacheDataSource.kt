@@ -1,8 +1,8 @@
 package com.example.hearthstoneapp.data.repository.allcards.datasource
 
-import com.example.hearthstoneapp.data.model.AllCards
+import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 
 interface AllCardsCacheDataSource {
-    suspend fun getAllCardsFromCache(): List<AllCards>
-    suspend fun saveAllCardsToCache(allCards: List<AllCards>)
+    suspend fun getAllCardsFromCache(): List<AllCardsBasic>
+    suspend fun saveAllCardsToCache(allCardBasics: List<AllCardsBasic>)
 }

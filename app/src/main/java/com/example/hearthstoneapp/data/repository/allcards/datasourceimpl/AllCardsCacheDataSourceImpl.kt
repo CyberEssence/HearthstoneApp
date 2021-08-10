@@ -1,17 +1,17 @@
 package com.example.hearthstoneapp.data.repository.allcards.datasourceimpl
 
-import com.example.hearthstoneapp.data.model.AllCards
+import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsCacheDataSource
 
 class AllCardsCacheDataSourceImpl: AllCardsCacheDataSource {
-    private var allCardsList = ArrayList<AllCards>()
+    private var allCardsList = ArrayList<AllCardsBasic>()
 
-    override suspend fun getAllCardsFromCache(): List<AllCards> {
+    override suspend fun getAllCardsFromCache(): List<AllCardsBasic> {
         return allCardsList
     }
 
-    override suspend fun saveAllCardsToCache(allCards: List<AllCards>) {
+    override suspend fun saveAllCardsToCache(allCardBasics: List<AllCardsBasic>) {
         allCardsList.clear()
-        allCardsList = ArrayList(allCards)
+        allCardsList = ArrayList(allCardBasics)
     }
 }

@@ -1,12 +1,12 @@
-package com.example.hearthstoneapp.data.model
+package com.example.hearthstoneapp.data.model.allcards.basic
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import org.jetbrains.annotations.NotNull
 
-@Entity(tableName = "all_cards")
-data class AllCards(
+@Entity(tableName = "all_cards_basic")
+data class AllCardsBasic(
     @PrimaryKey(autoGenerate = true)
     @NotNull
     var id: Int,
