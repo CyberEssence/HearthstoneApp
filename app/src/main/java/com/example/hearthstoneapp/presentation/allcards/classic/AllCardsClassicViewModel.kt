@@ -2,35 +2,24 @@ package com.example.hearthstoneapp.presentation.allcards.classic
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import com.example.hearthstoneapp.data.api.RetrofitService
-import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.data.model.allcards.classic.AllCardsClassic
-import com.example.hearthstoneapp.domain.usecase.classic.GetAllCardsClassicUseCase
-import com.example.hearthstoneapp.domain.usecase.classic.UpdateAllCardsClassicUseCase
+import com.example.hearthstoneapp.domain.usecase.GetAllCardsUseCase
+import com.example.hearthstoneapp.domain.usecase.UpdateAllCardsUseCase
+import com.example.hearthstoneapp.presentation.allcards.AllCardsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AllCardsClassicViewModel(
-    private val getAllCardsClassicUseCase: GetAllCardsClassicUseCase,
-    private val updateAllCardsClassicUseCase: UpdateAllCardsClassicUseCase
-): ViewModel() {
+    private val getAllCardsUseCase: GetAllCardsUseCase,
+    private val updateAllCardsUseCase: UpdateAllCardsUseCase
+): AllCardsViewModel(getAllCardsUseCase,
+    updateAllCardsUseCase)  {
 
     val userService = RetrofitService().getApiClient()
     val allCards = MutableLiveData<List<AllCardsClassic>>()
-
-    fun getAllCardsClassic() = liveData {
-        val allCardsList = getAllCardsClassicUseCase.execute()
-        emit(allCardsList)
-    }
-
-    fun updateAllCardsClassic() = liveData {
-        val allCardsList = updateAllCardsClassicUseCase.execute()
-        emit(allCardsList)
-    }
 
     fun refresh() {
         fetchUsers()
