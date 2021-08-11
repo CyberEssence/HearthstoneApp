@@ -1,6 +1,7 @@
 package com.example.hearthstoneapp.presentation.di.core
 
-import com.example.hearthstoneapp.presentation.di.allcards.AllCardsSubComponent
+import com.example.hearthstoneapp.presentation.di.basic.AllCardsBasicSubComponent
+import com.example.hearthstoneapp.presentation.di.classic.AllCardsClassicSubComponent
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,5 +17,6 @@ import javax.inject.Singleton
     CacheDataModule::class
 ])
 interface AppComponent {
-    fun allCardsSubComponent(): AllCardsSubComponent.Factory
+    fun allCardsBasicSubComponent(): AllCardsBasicSubComponent.Factory
+    fun allCardsClassicSubComponent(): AllCardsClassicSubComponent.Factory
 }

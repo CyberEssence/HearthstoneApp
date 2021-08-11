@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class Classic(
     @SerializedName("Classic")
-    val Classic: List<AllCardsClassic>
+    val classic: List<AllCardsClassic>
 )

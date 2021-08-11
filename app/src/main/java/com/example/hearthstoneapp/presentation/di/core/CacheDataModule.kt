@@ -1,7 +1,9 @@
 package com.example.hearthstoneapp.presentation.di.core
 
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsCacheDataSource
-import com.example.hearthstoneapp.data.repository.allcards.datasourceimpl.AllCardsCacheDataSourceImpl
+import com.example.hearthstoneapp.data.repository.basic.datasource.AllCardsBasicCacheDataSource
+import com.example.hearthstoneapp.data.repository.basic.datasourceimpl.AllCardsBasicCacheDataSourceImpl
+import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicCacheDataSource
+import com.example.hearthstoneapp.data.repository.classic.datasourceimpl.AllCardsClassicCacheDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,7 +12,13 @@ import javax.inject.Singleton
 class CacheDataModule {
     @Singleton
     @Provides
-    fun provideAllCardsCacheDataSource(): AllCardsCacheDataSource {
-        return AllCardsCacheDataSourceImpl()
+    fun provideAllCardsBasicCacheDataSource(): AllCardsBasicCacheDataSource {
+        return AllCardsBasicCacheDataSourceImpl()
+    }
+
+    @Singleton
+    @Provides
+    fun provideAllCardsClassicCacheDataSource(): AllCardsClassicCacheDataSource {
+        return AllCardsClassicCacheDataSourceImpl()
     }
 }

@@ -3,7 +3,8 @@ package com.example.hearthstoneapp.presentation
 import android.app.Application
 import com.example.hearthstoneapp.BuildConfig
 import com.example.hearthstoneapp.presentation.di.Injector
-import com.example.hearthstoneapp.presentation.di.allcards.AllCardsSubComponent
+import com.example.hearthstoneapp.presentation.di.basic.AllCardsBasicSubComponent
+import com.example.hearthstoneapp.presentation.di.classic.AllCardsClassicSubComponent
 import com.example.hearthstoneapp.presentation.di.core.*
 
 class App : Application(), Injector {
@@ -19,7 +20,11 @@ class App : Application(), Injector {
 
     }
 
-    override fun createAllCardsSubComponent(): AllCardsSubComponent {
-        return appComponent.allCardsSubComponent().create()
+    override fun createAllCardsBasicSubComponent(): AllCardsBasicSubComponent {
+        return appComponent.allCardsBasicSubComponent().create()
+    }
+
+    override fun createAllCardsClassicSubComponent(): AllCardsClassicSubComponent {
+        return appComponent.allCardsClassicSubComponent().create()
     }
 }

@@ -12,8 +12,6 @@ import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
-    private var basics = ArrayList<Basic>()
-    //var all : Basic = Basic(basics)
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

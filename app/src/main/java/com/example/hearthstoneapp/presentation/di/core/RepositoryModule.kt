@@ -1,10 +1,15 @@
 package com.example.hearthstoneapp.presentation.di.core
 
-import com.example.hearthstoneapp.data.repository.allcards.AllCardsRepositoryImpl
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsCacheDataSource
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsLocalDataSource
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsRemoteDataSource
-import com.example.hearthstoneapp.domain.repository.AllCardsRepository
+import com.example.hearthstoneapp.data.repository.basic.AllCardsBasicRepositoryImpl
+import com.example.hearthstoneapp.data.repository.basic.datasource.AllCardsBasicCacheDataSource
+import com.example.hearthstoneapp.data.repository.basic.datasource.AllCardsBasicLocalDataSource
+import com.example.hearthstoneapp.data.repository.basic.datasource.AllCardsBasicRemoteDataSource
+import com.example.hearthstoneapp.data.repository.classic.AllCardsClassicRepositoryImpl
+import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicCacheDataSource
+import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicLocalDataSource
+import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicRemoteDataSource
+import com.example.hearthstoneapp.domain.repository.basic.AllCardsBasicRepository
+import com.example.hearthstoneapp.domain.repository.classic.AllCardsClassicRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,16 +18,33 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Provides
     @Singleton
-    fun provideAllCardsRepository(
-        allCardsRemoteDatasource: AllCardsRemoteDataSource,
-        allCardsLocalDataSource: AllCardsLocalDataSource,
-        allCardsCacheDataSource: AllCardsCacheDataSource
-    ): AllCardsRepository {
+    fun provideAllCardsBasicRepository(
+        allCardsBasicRemoteDatasource: AllCardsBasicRemoteDataSource,
+        allCardsBasicLocalDataSource: AllCardsBasicLocalDataSource,
+        allCardsBasicCacheDataSource: AllCardsBasicCacheDataSource
+    ): AllCardsBasicRepository {
 
-        return AllCardsRepositoryImpl(
-            allCardsRemoteDatasource,
-            allCardsLocalDataSource,
-            allCardsCacheDataSource
+        return AllCardsBasicRepositoryImpl(
+            allCardsBasicRemoteDatasource,
+            allCardsBasicLocalDataSource,
+            allCardsBasicCacheDataSource
+        )
+
+
+    }
+
+    @Provides
+    @Singleton
+    fun provideAllCardsClassicRepository(
+        allCardsClassicRemoteDatasource: AllCardsClassicRemoteDataSource,
+        allCardsClassicLocalDataSource: AllCardsClassicLocalDataSource,
+        allCardsClassicCacheDataSource: AllCardsClassicCacheDataSource
+    ): AllCardsClassicRepository {
+
+        return AllCardsClassicRepositoryImpl(
+            allCardsClassicRemoteDatasource,
+            allCardsClassicLocalDataSource,
+            allCardsClassicCacheDataSource
         )
 
 

@@ -19,8 +19,9 @@ data class AllCardsClassic(
     val dbfId: String,
     @SerializedName("locale")
     val locale: String,
-    @SerializedName("mechanics")
-    val mechanics: List<Mechanic>,
+    /*@SerializedName("mechanics")
+    @Nullable
+    val mechanics: List<Mechanic>,*/
     @SerializedName("name")
     val name: String,
     @SerializedName("playerClass")

@@ -1,8 +1,10 @@
 package com.example.hearthstoneapp.presentation.di.core
 
 import com.example.hearthstoneapp.data.api.HearthstoneService
-import com.example.hearthstoneapp.data.repository.allcards.datasource.AllCardsRemoteDataSource
-import com.example.hearthstoneapp.data.repository.allcards.datasourceimpl.AllCardsRemoteDataSourceImpl
+import com.example.hearthstoneapp.data.repository.basic.datasource.AllCardsBasicRemoteDataSource
+import com.example.hearthstoneapp.data.repository.basic.datasourceimpl.AllCardsBasicRemoteDataSourceImpl
+import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicRemoteDataSource
+import com.example.hearthstoneapp.data.repository.classic.datasourceimpl.AllCardsClassicRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,8 +13,16 @@ import javax.inject.Singleton
 class RemoteDataModule {
     @Singleton
     @Provides
-    fun provideAllCardsRemoteDataSource(hearthstoneService: HearthstoneService): AllCardsRemoteDataSource {
-        return AllCardsRemoteDataSourceImpl(
+    fun provideAllCardsBasicRemoteDataSource(hearthstoneService: HearthstoneService): AllCardsBasicRemoteDataSource {
+        return AllCardsBasicRemoteDataSourceImpl(
+            hearthstoneService
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideAllCardsClassicRemoteDataSource(hearthstoneService: HearthstoneService): AllCardsClassicRemoteDataSource {
+        return AllCardsClassicRemoteDataSourceImpl(
             hearthstoneService
         )
     }
