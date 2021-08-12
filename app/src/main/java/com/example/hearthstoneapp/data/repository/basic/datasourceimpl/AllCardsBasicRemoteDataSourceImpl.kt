@@ -7,8 +7,7 @@ import retrofit2.Response
 
 class AllCardsBasicRemoteDataSourceImpl(
     private val hearthstoneService: HearthstoneService
-): AllCardsBasicRemoteDataSource {
-    override suspend fun getAllCardsBasic()
-            : Response<Basic> = hearthstoneService.getAllCardsBasic()
+) : AllCardsBasicRemoteDataSource {
+    override suspend fun getAllCardsBasic(): Response<Basic> = hearthstoneService.getAllCardsBasic()
 
 }

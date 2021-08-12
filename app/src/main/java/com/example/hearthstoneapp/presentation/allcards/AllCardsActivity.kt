@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hearthstoneapp.R
 import com.example.hearthstoneapp.databinding.ActivityAllCardsBinding
+import com.example.hearthstoneapp.presentation.allcards.classic.ClassicAdapter
 import com.example.hearthstoneapp.presentation.di.Injector
 import javax.inject.Inject
 

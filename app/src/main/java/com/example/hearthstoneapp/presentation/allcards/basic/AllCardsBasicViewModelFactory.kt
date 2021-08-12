@@ -12,12 +12,9 @@ import com.example.hearthstoneapp.presentation.allcards.AllCardsViewModelFactory
 class AllCardsBasicViewModelFactory(
     private val getAllCardsUseCase: GetAllCardsUseCase,
     private val updateAllCardsUseCase: UpdateAllCardsUseCase
-): AllCardsViewModelFactory(
-    getAllCardsUseCase,
-    updateAllCardsUseCase
-), ViewModelProvider.Factory {
+): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return AllCardsViewModel(
+        return AllCardsBasicViewModel(
             getAllCardsUseCase,
             updateAllCardsUseCase
         ) as T

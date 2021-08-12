@@ -1,8 +1,7 @@
 package com.example.hearthstoneapp.presentation.di.classic
 
-import com.example.hearthstoneapp.domain.usecase.classic.GetAllCardsClassicUseCase
-import com.example.hearthstoneapp.domain.usecase.classic.UpdateAllCardsClassicUseCase
-import com.example.hearthstoneapp.presentation.allcards.basic.AllCardsBasicViewModelFactory
+import com.example.hearthstoneapp.domain.usecase.GetAllCardsUseCase
+import com.example.hearthstoneapp.domain.usecase.UpdateAllCardsUseCase
 import com.example.hearthstoneapp.presentation.allcards.classic.AllCardsClassicViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -12,8 +11,8 @@ class AllCardsClassicModule {
     @AllCardsClassicScope
     @Provides
     fun provideAllCardsClassicViewModelFactory(
-        getAllCardsClassicUseCase: GetAllCardsClassicUseCase,
-        updateAllCardsClassicUseCase: UpdateAllCardsClassicUseCase
+        getAllCardsClassicUseCase: GetAllCardsUseCase,
+        updateAllCardsClassicUseCase: UpdateAllCardsUseCase
     ): AllCardsClassicViewModelFactory {
         return AllCardsClassicViewModelFactory(
             getAllCardsClassicUseCase,

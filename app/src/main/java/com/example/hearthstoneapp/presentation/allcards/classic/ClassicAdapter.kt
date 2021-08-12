@@ -1,6 +1,5 @@
-package com.example.hearthstoneapp.presentation.allcards
+package com.example.hearthstoneapp.presentation.allcards.classic
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil

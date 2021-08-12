@@ -31,7 +31,7 @@ class AllCardsClassicRepositoryImpl(
             val response = allCardsClassicRemoteDatasource.getAllCardsClassic()
             val body = response.body()
             if(body!=null){
-                cardList = body.Classic
+                cardList = body.classic
             }
         } catch (exception: Exception) {
             Log.i("MyTag", exception.message.toString())

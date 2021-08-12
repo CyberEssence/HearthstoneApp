@@ -4,8 +4,9 @@ import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.data.model.allcards.classic.AllCardsClassic
 import com.example.hearthstoneapp.domain.repository.basic.AllCardsBasicRepository
 import com.example.hearthstoneapp.domain.repository.classic.AllCardsClassicRepository
+import javax.inject.Inject
 
-class UpdateAllCardsUseCase(
+class UpdateAllCardsUseCase @Inject constructor(
     private val allCardsBasicRepository: AllCardsBasicRepository,
     private val allCardsClassicRepository: AllCardsClassicRepository
 ) {
