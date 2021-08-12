@@ -26,11 +26,11 @@ data class AllCardsClassic(
     val name: String,
     @SerializedName("playerClass")
     val playerClass: String,
-    @SerializedName("text")
-    val text: String,
+    /*@SerializedName("text")
+    val text: String,*/
     @SerializedName("type")
     val type: String,
-    @SerializedName("faction")
+    /*@SerializedName("faction")
     @Nullable
     val faction: String,
     @SerializedName("rarity")
@@ -68,5 +68,5 @@ data class AllCardsClassic(
     val spellSchool: String,
     @SerializedName("durability")
     @Nullable
-    val durability: String
+    val durability: String*/
 )
