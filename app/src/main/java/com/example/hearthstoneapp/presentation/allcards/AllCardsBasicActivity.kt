@@ -1,5 +1,6 @@
 package com.example.hearthstoneapp.presentation.allcards
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -13,17 +14,21 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hearthstoneapp.R
+import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
+import com.example.hearthstoneapp.data.model.allcards.classic.AllCardsClassic
 import com.example.hearthstoneapp.databinding.ActivityAllCardsBinding
 import com.example.hearthstoneapp.presentation.allcards.classic.ClassicAdapter
 import com.example.hearthstoneapp.presentation.di.Injector
 import javax.inject.Inject
 
-class AllCardsActivity: AppCompatActivity() {
+class AllCardsBasicActivity: AppCompatActivity(), OnAllCardsBasicRecyclerViewClickListener, OnAllCardsClassicRecyclerViewClickListener {
     @Inject
     lateinit var factory: AllCardsViewModelFactory
     private lateinit var allCardsViewModel: AllCardsViewModel
-    private var basicAdapter: BasicAdapter = BasicAdapter()
-    private var classicAdapter: ClassicAdapter = ClassicAdapter()
+    private val allCardsClassicList = ArrayList<AllCardsClassic>()
+    private val allCardsBasicList = ArrayList<AllCardsBasic>()
+    private var basicAdapter: BasicAdapter = BasicAdapter(allCardsBasicList, this)
+    private var classicAdapter: ClassicAdapter = ClassicAdapter(allCardsClassicList, this)
     private lateinit var binding: ActivityAllCardsBinding
     private val concatAdapter = ConcatAdapter(basicAdapter, classicAdapter)
 
@@ -114,5 +119,17 @@ class AllCardsActivity: AppCompatActivity() {
                 binding.allCardsProgressBar.visibility = View.GONE
             }
         })
+    }
+
+    override fun onAllCardsBasicItemClicked(position: Int) {
+        val intent = Intent(this, AllCardsBasicDetail::class.java)
+        intent.putExtra("nameOfBasicCard", allCardsBasicList[position].name)
+        startActivity(intent)
+    }
+
+    override fun onAllCardsClassicItemClicked(position: Int) {
+        val intent = Intent(this, AllCardsClassicDetail::class.java)
+        intent.putExtra("nameOfClassicCard", allCardsClassicList[position].name)
+        startActivity(intent)
     }
 }

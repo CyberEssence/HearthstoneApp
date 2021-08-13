@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hearthstoneapp.R
 import com.example.hearthstoneapp.data.model.allcards.classic.AllCardsClassic
 import com.example.hearthstoneapp.databinding.ListItemClassicBinding
+import com.example.hearthstoneapp.presentation.allcards.OnAllCardsBasicRecyclerViewClickListener
+import com.example.hearthstoneapp.presentation.allcards.OnAllCardsClassicRecyclerViewClickListener
 
-class ClassicAdapter(): RecyclerView.Adapter<ClassicViewHolder>() {
-    private val allCardsList = ArrayList<AllCardsClassic>()
+class ClassicAdapter(private val allCardsList: ArrayList<AllCardsClassic>, private val onAllCardsClassicRecyclerViewClickListener: OnAllCardsClassicRecyclerViewClickListener): RecyclerView.Adapter<ClassicViewHolder>() {
 
     fun setList(allCardClassic: List<AllCardsClassic>?){
         allCardsList.clear()
@@ -35,6 +36,10 @@ class ClassicAdapter(): RecyclerView.Adapter<ClassicViewHolder>() {
 
     override fun onBindViewHolder(holder: ClassicViewHolder, position: Int) {
         holder.bind(allCardsList[position])
+
+        holder.itemView.setOnClickListener {
+            onAllCardsClassicRecyclerViewClickListener.onAllCardsClassicItemClicked(position)
+        }
     }
 }
 

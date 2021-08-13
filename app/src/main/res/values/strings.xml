@@ -3,4 +3,5 @@
     <string name="all_classes">All classes</string>
     <string name="all_races">All races</string>
     <string name="all_cards">All cards</string>
+    <string name="name_of_card_text">Name of card:</string>
 </resources>

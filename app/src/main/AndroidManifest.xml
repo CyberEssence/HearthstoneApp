@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hearthstoneapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".presentation.App"
@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.allcards.AllCardsActivity"></activity>
+        <activity
+            android:name=".presentation.allcards.AllCardsClassicDetail"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.allcards.AllCardsBasicDetail"
+            android:exported="true" />
+        <activity android:name=".presentation.allcards.AllCardsBasicActivity" />
         <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

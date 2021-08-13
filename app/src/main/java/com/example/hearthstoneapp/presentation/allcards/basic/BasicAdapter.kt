@@ -1,6 +1,5 @@
 package com.example.hearthstoneapp.presentation.allcards
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,8 +9,7 @@ import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.databinding.ListItemBasicBinding
 import kotlin.collections.ArrayList
 
-class BasicAdapter(): RecyclerView.Adapter<BasicViewHolder>() {
-    private val allCardsList = ArrayList<AllCardsBasic>()
+class BasicAdapter(private val allCardsList: ArrayList<AllCardsBasic>, private val onAllCardsBasicRecyclerViewClickListener: OnAllCardsBasicRecyclerViewClickListener): RecyclerView.Adapter<BasicViewHolder>() {
 
     fun setList(allCardBasics: List<AllCardsBasic>?){
         allCardsList.clear()
@@ -37,6 +35,10 @@ class BasicAdapter(): RecyclerView.Adapter<BasicViewHolder>() {
 
     override fun onBindViewHolder(holder: BasicViewHolder, position: Int) {
         holder.bind(allCardsList[position])
+
+        holder.itemView.setOnClickListener {
+            onAllCardsBasicRecyclerViewClickListener.onAllCardsBasicItemClicked(position)
+        }
     }
 }
 
