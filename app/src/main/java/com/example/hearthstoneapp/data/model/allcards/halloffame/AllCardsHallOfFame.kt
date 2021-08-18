@@ -20,17 +20,17 @@ data class AllCardsHallOfFame(
     val dbfId: String,
     @SerializedName("locale")
     val locale: String,
-    @SerializedName("mechanics")
-    val mechanics: List<Mechanic>,
+    /*@SerializedName("mechanics")
+    val mechanics: List<Mechanic>,*/
     @SerializedName("name")
     val name: String,
     @SerializedName("playerClass")
     val playerClass: String,
-    @SerializedName("text")
-    val text: String,
+    /*@SerializedName("text")
+    val text: String,*/
     @SerializedName("type")
-    val type: String,
-    @SerializedName("faction")
+    val type: String
+    /*@SerializedName("faction")
     @Nullable
     val faction: String,
     @SerializedName("rarity")
@@ -68,5 +68,5 @@ data class AllCardsHallOfFame(
     val spellSchool: String,
     @SerializedName("durability")
     @Nullable
-    val durability: String
+    val durability: String*/
 )

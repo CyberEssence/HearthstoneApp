@@ -1,17 +1,16 @@
-package com.example.hearthstoneapp.presentation.allcards.classic
+package com.example.hearthstoneapp.presentation.allcards.basic.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.hearthstoneapp.domain.usecase.GetAllCardsUseCase
 import com.example.hearthstoneapp.domain.usecase.UpdateAllCardsUseCase
-import com.example.hearthstoneapp.presentation.allcards.AllCardsViewModel
 
-class AllCardsClassicViewModelFactory(
+class AllCardsBasicViewModelFactory(
     private val getAllCardsUseCase: GetAllCardsUseCase,
     private val updateAllCardsUseCase: UpdateAllCardsUseCase
-) : ViewModelProvider.Factory {
+): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return AllCardsClassicViewModel(
+        return AllCardsBasicViewModel(
             getAllCardsUseCase,
             updateAllCardsUseCase
         ) as T

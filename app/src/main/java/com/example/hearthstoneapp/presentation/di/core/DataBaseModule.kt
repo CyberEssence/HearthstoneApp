@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.hearthstoneapp.data.db.allcards.basic.AllCardsBasicDao
 import com.example.hearthstoneapp.data.db.HearthstoneDatabase
 import com.example.hearthstoneapp.data.db.allcards.classic.AllCardsClassicDao
+import com.example.hearthstoneapp.data.db.allcards.halloffame.AllCardsHallOfFameDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,7 +14,7 @@ import javax.inject.Singleton
 class DataBaseModule {
     @Singleton
     @Provides
-    fun provideAllCardsBasicDataBase(context: Context):HearthstoneDatabase {
+    fun provideAllCardsDataBase(context: Context):HearthstoneDatabase {
         return Room.databaseBuilder(context, HearthstoneDatabase::class.java,"hearthstone")
             .fallbackToDestructiveMigration()
             .build()
@@ -28,5 +29,11 @@ class DataBaseModule {
     @Provides
     fun provideAllCardsClassicDao(hearthstoneDatabase: HearthstoneDatabase): AllCardsClassicDao {
         return hearthstoneDatabase.allCardsClassicDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideAllCardsHallOfFameDao(hearthstoneDatabase: HearthstoneDatabase): AllCardsHallOfFameDao {
+        return hearthstoneDatabase.allCardsHallOfFameDao()
     }
 }

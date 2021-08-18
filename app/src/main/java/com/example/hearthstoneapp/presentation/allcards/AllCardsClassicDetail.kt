@@ -12,7 +12,6 @@ class AllCardsClassicDetail : AppCompatActivity() {
     private lateinit var binding: ActivityAllCardsClassicDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_cards_classic_detail)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_cards_classic_detail)
 
         val nameOfClassicCard = intent.getStringExtra("nameOfClassicCard")

@@ -1,8 +1,6 @@
 package com.example.hearthstoneapp.data.repository.classic.datasourceimpl
 
-import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.data.model.allcards.classic.AllCardsClassic
-import com.example.hearthstoneapp.data.repository.basic.datasource.AllCardsBasicCacheDataSource
 import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicCacheDataSource
 
 class AllCardsClassicCacheDataSourceImpl: AllCardsClassicCacheDataSource {

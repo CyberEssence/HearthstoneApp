@@ -29,4 +29,14 @@ open class AllCardsViewModel(
         emit(allCardsList)
     }
 
+    fun getAllCardsHallOfFame() = liveData {
+        val allCardsList = getAllCardsUseCase.executeHallOfFame()
+        emit(allCardsList)
+    }
+
+    fun updateAllCardsHallOfFame() = liveData {
+        val allCardsList = updateAllCardsUseCase.executeHallOfFame()
+        emit(allCardsList)
+    }
+
 }

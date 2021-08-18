@@ -12,7 +12,6 @@ class AllCardsBasicDetail : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_cards_basic_detail)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_cards_basic_detail)
 
         val nameOfBasicCard = intent.getStringExtra("nameOfBasicCard")

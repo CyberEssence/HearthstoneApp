@@ -1,4 +1,4 @@
-package com.example.hearthstoneapp.presentation.allcards
+package com.example.hearthstoneapp.presentation.allcards.basic.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hearthstoneapp.R
 import com.example.hearthstoneapp.data.model.allcards.basic.AllCardsBasic
 import com.example.hearthstoneapp.databinding.ListItemBasicBinding
+import com.example.hearthstoneapp.presentation.allcards.OnAllCardsBasicRecyclerViewClickListener
 import kotlin.collections.ArrayList
 
 class BasicAdapter(private val allCardsList: ArrayList<AllCardsBasic>, private val onAllCardsBasicRecyclerViewClickListener: OnAllCardsBasicRecyclerViewClickListener): RecyclerView.Adapter<BasicViewHolder>() {

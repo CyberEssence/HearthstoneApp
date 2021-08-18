@@ -1,4 +1,4 @@
-package com.example.hearthstoneapp.presentation.allcards.classic
+package com.example.hearthstoneapp.presentation.allcards.classic.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,10 @@ import com.example.hearthstoneapp.databinding.ListItemClassicBinding
 import com.example.hearthstoneapp.presentation.allcards.OnAllCardsBasicRecyclerViewClickListener
 import com.example.hearthstoneapp.presentation.allcards.OnAllCardsClassicRecyclerViewClickListener
 
-class ClassicAdapter(private val allCardsList: ArrayList<AllCardsClassic>, private val onAllCardsClassicRecyclerViewClickListener: OnAllCardsClassicRecyclerViewClickListener): RecyclerView.Adapter<ClassicViewHolder>() {
+class ClassicAdapter(
+    private val allCardsList: ArrayList<AllCardsClassic>,
+    private val onAllCardsClassicRecyclerViewClickListener: OnAllCardsClassicRecyclerViewClickListener
+    ): RecyclerView.Adapter<ClassicViewHolder>() {
 
     fun setList(allCardClassic: List<AllCardsClassic>?){
         allCardsList.clear()

@@ -2,9 +2,7 @@ package com.example.hearthstoneapp.presentation.di.basic
 
 import com.example.hearthstoneapp.domain.usecase.GetAllCardsUseCase
 import com.example.hearthstoneapp.domain.usecase.UpdateAllCardsUseCase
-import com.example.hearthstoneapp.domain.usecase.basic.GetAllCardsBasicUseCase
-import com.example.hearthstoneapp.domain.usecase.basic.UpdateAllCardsBasicUseCase
-import com.example.hearthstoneapp.presentation.allcards.basic.AllCardsBasicViewModelFactory
+import com.example.hearthstoneapp.presentation.allcards.basic.viewmodel.AllCardsBasicViewModelFactory
 import dagger.Module
 import dagger.Provides
 

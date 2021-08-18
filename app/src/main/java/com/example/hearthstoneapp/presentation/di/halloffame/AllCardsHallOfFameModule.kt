@@ -1,4 +1,4 @@
-package com.example.hearthstoneapp.presentation.di.classic
+package com.example.hearthstoneapp.presentation.di.halloffame
 
 import com.example.hearthstoneapp.domain.usecase.GetAllCardsUseCase
 import com.example.hearthstoneapp.domain.usecase.UpdateAllCardsUseCase
@@ -7,16 +7,16 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class AllCardsClassicModule {
-    @AllCardsClassicScope
+class AllCardsHallOfFameModule {
+    @AllCardsHallOfFameScope
     @Provides
-    fun provideAllCardsClassicViewModelFactory(
-        getAllCardsClassicUseCase: GetAllCardsUseCase,
-        updateAllCardsClassicUseCase: UpdateAllCardsUseCase
+    fun provideAllCardsHallOfFameViewModelFactory(
+        getAllCardsHallOfFameUseCase: GetAllCardsUseCase,
+        updateAllCardsHallOfFameUseCase: UpdateAllCardsUseCase
     ): AllCardsClassicViewModelFactory {
         return AllCardsClassicViewModelFactory(
-            getAllCardsClassicUseCase,
-            updateAllCardsClassicUseCase
+            getAllCardsHallOfFameUseCase,
+            updateAllCardsHallOfFameUseCase
         )
     }
 }

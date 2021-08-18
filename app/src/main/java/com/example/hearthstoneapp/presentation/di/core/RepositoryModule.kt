@@ -8,8 +8,13 @@ import com.example.hearthstoneapp.data.repository.classic.AllCardsClassicReposit
 import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicCacheDataSource
 import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicLocalDataSource
 import com.example.hearthstoneapp.data.repository.classic.datasource.AllCardsClassicRemoteDataSource
+import com.example.hearthstoneapp.data.repository.halloffame.AllCardsHallOfFameRepositoryImpl
+import com.example.hearthstoneapp.data.repository.halloffame.datasource.AllCardsHallOfFameCacheDataSource
+import com.example.hearthstoneapp.data.repository.halloffame.datasource.AllCardsHallOfFameLocalDataSource
+import com.example.hearthstoneapp.data.repository.halloffame.datasource.AllCardsHallOfFameRemoteDataSource
 import com.example.hearthstoneapp.domain.repository.basic.AllCardsBasicRepository
 import com.example.hearthstoneapp.domain.repository.classic.AllCardsClassicRepository
+import com.example.hearthstoneapp.domain.repository.halloffame.AllCardsHallOfFameRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -46,7 +51,20 @@ class RepositoryModule {
             allCardsClassicLocalDataSource,
             allCardsClassicCacheDataSource
         )
+    }
 
+    @Provides
+    @Singleton
+    fun provideAllCardsHallOfFameRepository(
+        allCardsHallOfFameRemoteDatasource: AllCardsHallOfFameRemoteDataSource,
+        allCardsHallOfFameLocalDataSource: AllCardsHallOfFameLocalDataSource,
+        allCardsHallOfFameCacheDataSource: AllCardsHallOfFameCacheDataSource
+    ): AllCardsHallOfFameRepository {
 
+        return AllCardsHallOfFameRepositoryImpl(
+            allCardsHallOfFameRemoteDatasource,
+            allCardsHallOfFameLocalDataSource,
+            allCardsHallOfFameCacheDataSource
+        )
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hearthstoneapp">
+    package="com.example.hearthstoneapp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,15 +11,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".presentation.allcards.AllCardsHallOfFameDetail"
+            android:exported="true" />
         <activity
             android:name=".presentation.allcards.AllCardsClassicDetail"
             android:exported="true" />
         <activity
             android:name=".presentation.allcards.AllCardsBasicDetail"
             android:exported="true" />
-        <activity android:name=".presentation.allcards.AllCardsBasicActivity" />
-        <activity android:name=".presentation.MainActivity">
+        <activity android:name=".presentation.allcards.AllCardsActivity" />
+        <activity android:name=".presentation.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
