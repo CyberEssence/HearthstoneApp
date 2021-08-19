@@ -101,6 +101,7 @@ class AllCardsActivity:
         })
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater : MenuInflater = menuInflater
         inflater.inflate(R.menu.update,menu)
@@ -109,14 +110,90 @@ class AllCardsActivity:
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
-            R.id.action_update -> {
-                updateAllCards()
+            R.id.update -> {
+                initRecyclerView()
+                true
+            }
+            R.id.basic -> {
+                initRecyclerViewBasic()
+                true
+            }
+            R.id.classic -> {
+                initRecyclerViewClassic()
+                true
+            }
+            R.id.hall_of_fame -> {
+                initRecyclerViewHallOfFame()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
 
     }
+
+    private fun initRecyclerViewBasic(){
+        binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.allCardsRecyclerView.adapter = basicAdapter
+        displayAllCardsBasic()
+    }
+
+    private fun initRecyclerViewClassic(){
+        binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.allCardsRecyclerView.adapter = classicAdapter
+        displayAllCardsClassic()
+    }
+
+    private fun initRecyclerViewHallOfFame(){
+        binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.allCardsRecyclerView.adapter = hallOfFameAdapter
+        displayAllCardsHallOfFame()
+    }
+
+    private fun displayAllCardsBasic() {
+        binding.allCardsProgressBar.visibility = View.VISIBLE
+        val responseLiveDataBasic = allCardsViewModel.getAllCardsBasic()
+        responseLiveDataBasic.observe(this, Observer {
+            if(it!=null){
+                basicAdapter.setList(it)
+                basicAdapter.notifyDataSetChanged()
+                binding.allCardsProgressBar.visibility = View.GONE
+            }else{
+                binding.allCardsProgressBar.visibility = View.GONE
+                Toast.makeText(applicationContext,"No data available", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun displayAllCardsClassic() {
+        binding.allCardsProgressBar.visibility = View.VISIBLE
+        val responseLiveDataClassic = allCardsViewModel.getAllCardsClassic()
+        responseLiveDataClassic.observe(this, Observer {
+            if(it!=null){
+                classicAdapter.setList(it)
+                classicAdapter.notifyDataSetChanged()
+                binding.allCardsProgressBar.visibility = View.GONE
+            }else{
+                binding.allCardsProgressBar.visibility = View.GONE
+                Toast.makeText(applicationContext,"No data available", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun displayAllCardsHallOfFame() {
+        binding.allCardsProgressBar.visibility = View.VISIBLE
+        val responseLiveDataHallOfFame = allCardsViewModel.getAllCardsHallOfFame()
+        responseLiveDataHallOfFame.observe(this, Observer {
+            if(it!=null){
+                hallOfFameAdapter.setList(it)
+                hallOfFameAdapter.notifyDataSetChanged()
+                binding.allCardsProgressBar.visibility = View.GONE
+            }else{
+                binding.allCardsProgressBar.visibility = View.GONE
+                Toast.makeText(applicationContext,"No data available", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
 
     private fun updateAllCards(){
         binding.allCardsProgressBar.visibility = View.VISIBLE
