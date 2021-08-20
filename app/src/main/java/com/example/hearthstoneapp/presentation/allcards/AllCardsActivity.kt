@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -41,7 +43,11 @@ class AllCardsActivity:
     private var hallOfFameAdapter: HallOfFameAdapter = HallOfFameAdapter(allCardsHallOfFameList, this)
     private lateinit var binding: ActivityAllCardsBinding
     private val concatAdapter = ConcatAdapter(basicAdapter, classicAdapter, hallOfFameAdapter)
-
+    private lateinit var fabOpen: Animation
+    private lateinit var fabClose: Animation
+    private lateinit var rotateForward: Animation
+    private lateinit var rotateBackward: Animation
+    private var isOpen = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +62,38 @@ class AllCardsActivity:
 
         binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
         initRecyclerView()
+        fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
+        fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
+
+        rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward)
+        rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward)
+        binding.fab.setOnClickListener {
+            animateFab()
+        }
+        binding.fab1.setOnClickListener {
+            animateFab()
+        }
+        binding.fab2.setOnClickListener {
+            animateFab()
+        }
+    }
+
+    private fun animateFab() {
+        if(isOpen) {
+            binding.fab.startAnimation(rotateForward)
+            binding.fab1.startAnimation(fabClose)
+            binding.fab2.startAnimation(fabClose)
+            binding.fab1.isClickable = false
+            binding.fab2.isClickable = false
+            isOpen = false
+        } else {
+            binding.fab.startAnimation(rotateBackward)
+            binding.fab1.startAnimation(fabOpen)
+            binding.fab2.startAnimation(fabOpen)
+            binding.fab1.isClickable = true
+            binding.fab2.isClickable = true
+            isOpen = true
+        }
     }
 
     private fun initRecyclerView(){

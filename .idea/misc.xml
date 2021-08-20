@@ -8,6 +8,8 @@
         <entry key="..\:/Users/cyber_essence/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards_hall_of_fame_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/cyber_essence/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/list_item_basic.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/cyber_essence/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/list_item_hall_of_fame.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable-v24/ic_add.xml" value="0.1" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable-v24/ic_sort.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable/btn_rounded.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable/ic_update.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards.xml" value="0.22" />
@@ -16,6 +18,9 @@
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards_detail.xml" value="0.12685185185185185" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/card_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/classes_list.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/custom_item_spinner_class.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/custom_item_spinner_race.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/list_item_basic.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/list_item_classic.xml" value="0.36666666666666664" />
