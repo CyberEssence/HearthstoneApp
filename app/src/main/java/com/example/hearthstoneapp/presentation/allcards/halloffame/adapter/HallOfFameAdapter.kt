@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hearthstoneapp.R
+import com.example.hearthstoneapp.data.model.allcards.classic.AllCardsClassic
 import com.example.hearthstoneapp.data.model.allcards.halloffame.AllCardsHallOfFame
-import com.example.hearthstoneapp.databinding.ListItemClassicBinding
 import com.example.hearthstoneapp.databinding.ListItemHallOfFameBinding
 import com.example.hearthstoneapp.presentation.allcards.OnAllCardsClassicRecyclerViewClickListener
 import com.example.hearthstoneapp.presentation.allcards.OnAllCardsHallOfFameRecyclerViewClickListener

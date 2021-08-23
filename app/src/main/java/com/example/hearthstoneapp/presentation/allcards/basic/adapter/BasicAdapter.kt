@@ -10,7 +10,12 @@ import com.example.hearthstoneapp.databinding.ListItemBasicBinding
 import com.example.hearthstoneapp.presentation.allcards.OnAllCardsBasicRecyclerViewClickListener
 import kotlin.collections.ArrayList
 
-class BasicAdapter(private val allCardsList: ArrayList<AllCardsBasic>, private val onAllCardsBasicRecyclerViewClickListener: OnAllCardsBasicRecyclerViewClickListener): RecyclerView.Adapter<BasicViewHolder>() {
+class BasicAdapter(
+    private val allCardsList: ArrayList<AllCardsBasic>,
+    private val onAllCardsBasicRecyclerViewClickListener:
+    OnAllCardsBasicRecyclerViewClickListener
+    ):
+    RecyclerView.Adapter<BasicViewHolder>() {
 
     fun setList(allCardBasics: List<AllCardsBasic>?){
         allCardsList.clear()

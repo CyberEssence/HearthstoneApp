@@ -24,7 +24,10 @@ import com.example.hearthstoneapp.presentation.allcards.basic.adapter.BasicAdapt
 import com.example.hearthstoneapp.presentation.allcards.classic.adapter.ClassicAdapter
 import com.example.hearthstoneapp.presentation.allcards.halloffame.adapter.HallOfFameAdapter
 import com.example.hearthstoneapp.presentation.di.Injector
+import java.util.*
 import javax.inject.Inject
+import kotlin.Comparator
+import kotlin.collections.ArrayList
 
 class AllCardsActivity:
     AppCompatActivity(),
@@ -42,7 +45,7 @@ class AllCardsActivity:
     private var classicAdapter: ClassicAdapter = ClassicAdapter(allCardsClassicList, this)
     private var hallOfFameAdapter: HallOfFameAdapter = HallOfFameAdapter(allCardsHallOfFameList, this)
     private lateinit var binding: ActivityAllCardsBinding
-    private val concatAdapter = ConcatAdapter(basicAdapter, classicAdapter, hallOfFameAdapter)
+    private var concatAdapter = ConcatAdapter(basicAdapter, classicAdapter, hallOfFameAdapter)
     private lateinit var fabOpen: Animation
     private lateinit var fabClose: Animation
     private lateinit var rotateForward: Animation
@@ -71,10 +74,54 @@ class AllCardsActivity:
             animateFab()
         }
         binding.fab1.setOnClickListener {
-            animateFab()
+            binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+            binding.allCardsRecyclerView.setHasFixedSize(true)
+
+            allCardsBasicList.sortBy {
+                it.name
+            }
+            binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+            binding.allCardsRecyclerView.setHasFixedSize(true)
+
+            allCardsClassicList.sortBy {
+                it.name
+            }
+            binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+            binding.allCardsRecyclerView.setHasFixedSize(true)
+
+            allCardsHallOfFameList.sortBy {
+                it.name
+            }
+            basicAdapter = BasicAdapter(allCardsBasicList, this)
+            classicAdapter = ClassicAdapter(allCardsClassicList, this)
+            hallOfFameAdapter = HallOfFameAdapter(allCardsHallOfFameList, this)
+            concatAdapter = ConcatAdapter(basicAdapter, classicAdapter, hallOfFameAdapter)
+            binding.allCardsRecyclerView.adapter = concatAdapter
         }
         binding.fab2.setOnClickListener {
-            animateFab()
+            binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+            binding.allCardsRecyclerView.setHasFixedSize(true)
+
+            allCardsBasicList.sortByDescending {
+                it.name
+            }
+            binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+            binding.allCardsRecyclerView.setHasFixedSize(true)
+
+            allCardsClassicList.sortByDescending {
+                it.name
+            }
+            binding.allCardsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+            binding.allCardsRecyclerView.setHasFixedSize(true)
+
+            allCardsHallOfFameList.sortByDescending {
+                it.name
+            }
+            basicAdapter = BasicAdapter(allCardsBasicList, this)
+            classicAdapter = ClassicAdapter(allCardsClassicList, this)
+            hallOfFameAdapter = HallOfFameAdapter(allCardsHallOfFameList, this)
+            concatAdapter = ConcatAdapter(basicAdapter, classicAdapter, hallOfFameAdapter)
+            binding.allCardsRecyclerView.adapter = concatAdapter
         }
     }
 
@@ -107,8 +154,11 @@ class AllCardsActivity:
         val responseLiveDataBasic = allCardsViewModel.getAllCardsBasic()
         val responseLiveDataClassic = allCardsViewModel.getAllCardsClassic()
         val responseLiveDataHallOfFame = allCardsViewModel.getAllCardsHallOfFame()
-        responseLiveDataBasic.observe(this, Observer {
+        responseLiveDataBasic.observe(this, Observer { it ->
             if(it!=null){
+                allCardsBasicList.sortBy {
+                    it.name[0]
+                }
                 basicAdapter.setList(it)
                 basicAdapter.notifyDataSetChanged()
                 binding.allCardsProgressBar.visibility = View.GONE
@@ -117,8 +167,11 @@ class AllCardsActivity:
                 Toast.makeText(applicationContext,"No data available", Toast.LENGTH_LONG).show()
             }
         })
-        responseLiveDataClassic.observe(this, Observer {
+        responseLiveDataClassic.observe(this, Observer { it ->
             if(it!=null){
+                allCardsClassicList.sortBy {
+                    it.name[0]
+                }
                 classicAdapter.setList(it)
                 classicAdapter.notifyDataSetChanged()
                 binding.allCardsProgressBar.visibility = View.GONE
@@ -127,8 +180,11 @@ class AllCardsActivity:
                 Toast.makeText(applicationContext,"No data available", Toast.LENGTH_LONG).show()
             }
         })
-        responseLiveDataHallOfFame.observe(this, Observer {
+        responseLiveDataHallOfFame.observe(this, Observer { it ->
             if(it!=null){
+                allCardsHallOfFameList.sortBy {
+                    it.name[0]
+                }
                 hallOfFameAdapter.setList(it)
                 hallOfFameAdapter.notifyDataSetChanged()
                 binding.allCardsProgressBar.visibility = View.GONE
