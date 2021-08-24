@@ -26,47 +26,47 @@ data class AllCardsHallOfFame(
     val name: String,
     @SerializedName("playerClass")
     val playerClass: String,
-    /*@SerializedName("text")
-    val text: String,*/
+    @SerializedName("text")
+    val text: String = "No text",
     @SerializedName("type")
-    val type: String
-    /*@SerializedName("faction")
+    val type: String,
+    @SerializedName("faction")
     @Nullable
-    val faction: String,
+    val faction: String = "No faction",
     @SerializedName("rarity")
     @Nullable
-    val rarity: String,
+    val rarity: String = "No rarity",
     @SerializedName("cost")
     @Nullable
-    val cost: Int,
+    val cost: Int = -1,
     @SerializedName("attack")
     @Nullable
-    val attack: Int,
+    val attack: Int = -1,
     @SerializedName("health")
     @Nullable
-    val health: Int,
+    val health: Int = -1,
     @SerializedName("race")
     @Nullable
-    val race: String,
+    val race: String = "No race",
     @SerializedName("img")
     @Nullable
-    val img: String,
+    val img: String = "No image",
     @SerializedName("imgGold")
     @Nullable
-    val imgGold: String,
+    val imgGold: String = "No image gold",
     @SerializedName("flavor")
     @Nullable
-    val flavor: String,
+    val flavor: String = "No flavor",
     @SerializedName("artist")
     @Nullable
-    val artist: String,
+    val artist: String = "No artist",
     @SerializedName("collectible")
     @Nullable
-    val collectible: String,
+    val collectible: String = "No collectible",
     @SerializedName("spellSchool")
     @Nullable
-    val spellSchool: String,
+    val spellSchool: String = "Np spell school",
     @SerializedName("durability")
     @Nullable
-    val durability: String*/
+    val durability: String = "No durability"
 )
