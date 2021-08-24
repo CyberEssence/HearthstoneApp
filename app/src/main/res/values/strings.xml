@@ -4,4 +4,6 @@
     <string name="all_races">All races</string>
     <string name="all_cards">All cards</string>
     <string name="name_of_card_text">Name of card:</string>
+    <string name="search">Search</string>
+    <string name="info">Info</string>
 </resources>

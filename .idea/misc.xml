@@ -11,12 +11,13 @@
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable-v24/ic_add.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable-v24/ic_sort.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable/btn_rounded.xml" value="0.1" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable/button_background.xml" value="0.25" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/drawable/ic_update.xml" value="0.1" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards.xml" value="0.22" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards_basic_detail.xml" value="0.12685185185185185" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards_classic_detail.xml" value="0.12685185185185185" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_all_cards_detail.xml" value="0.12685185185185185" />
-        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/card_row.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/classes_list.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/solov/AndroidStudioProjects/HearthstoneApp/app/src/main/res/layout/custom_item_spinner_class.xml" value="0.20520833333333333" />
