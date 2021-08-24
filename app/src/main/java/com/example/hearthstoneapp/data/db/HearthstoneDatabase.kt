@@ -10,7 +10,7 @@ import com.example.hearthstoneapp.data.model.allcards.classic.AllCardsClassic
 import com.example.hearthstoneapp.data.model.allcards.halloffame.AllCardsHallOfFame
 
 @Database(entities = [AllCardsBasic::class, AllCardsClassic::class, AllCardsHallOfFame::class],
-version = 9,
+version = 13,
 exportSchema = false)
 abstract class HearthstoneDatabase: RoomDatabase() {
     abstract fun allCardsBasicDao(): AllCardsBasicDao

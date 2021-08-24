@@ -31,8 +31,8 @@ data class AllCardsBasic(
     val type: String,
     /*@SerializedName("faction")
     @Nullable
-    val faction: String,
+    val faction: String = "No faction",
     @SerializedName("rarity")
     @Nullable
-    val rarity: String*/
+    val rarity: String = "No rarity"*/
 )
