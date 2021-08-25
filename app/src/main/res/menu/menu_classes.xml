@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/refresh_button"
+        android:orderInCategory="10"
+        android:icon="@drawable/refresh_button_menu"
+        app:showAsAction="always|withText"
+        android:title="">
+    </item>
+
+    <item
+        android:id="@+id/update"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_update"
+        app:showAsAction="never"
+        android:title="Update" >
+
+        <menu>
+
+            <item
+                android:id="@+id/basic"
+                android:title="Basic" />
+            <item
+                android:id="@+id/classic"
+                android:title="Classic" />
+            <item
+                android:id="@+id/hall_of_fame"
+                android:title="Hall of Fame" />
+
+
+        </menu>
+
+    </item>
+
+</menu>

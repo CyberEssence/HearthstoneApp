@@ -26,7 +26,6 @@ import com.example.hearthstoneapp.presentation.allcards.halloffame.adapter.HallO
 import com.example.hearthstoneapp.presentation.di.Injector
 import java.util.*
 import javax.inject.Inject
-import kotlin.Comparator
 import kotlin.collections.ArrayList
 
 class AllCardsActivity:
@@ -70,6 +69,9 @@ class AllCardsActivity:
 
         rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward)
         rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward)
+
+
+
         binding.fab.setOnClickListener {
             animateFab()
         }
@@ -198,12 +200,16 @@ class AllCardsActivity:
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater : MenuInflater = menuInflater
-        inflater.inflate(R.menu.update,menu)
+        inflater.inflate(R.menu.menu_classes,menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
+            R.id.refresh_button -> {
+                displayAllCards()
+                true
+            }
             R.id.update -> {
                 initRecyclerView()
                 true
